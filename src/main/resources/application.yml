@@ -1,0 +1,7 @@
+jwt:
+    token:
+        header: Authorization
+        issuer: szs
+        clientSecret: Rel3Bjce2MajBo09qgkNgYaTuzvJe8iwnBFhsDS5
+        expirySeconds: 360036
+        expiryRefreshSeconds: 86400
