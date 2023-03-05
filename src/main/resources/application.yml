@@ -1,7 +1,44 @@
+spring:
+    messages:
+        basename: i18n/messages
+        encoding: UTF-8
+        cache-duration: PT1H
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: "jdbc:h2:mem:szs;DB_CLOSE_DELAY=-1"
+        username: sa
+        password:
+    sql:
+        init:
+            platform: h2
+    jpa:
+        database-platform: H2
+        show-sql: true
+        hibernate:
+            ddl-auto: create-drop
+        defer-datasource-initialization: true
+        open-in-view: true
 jwt:
     token:
         header: Authorization
         issuer: szs
-        clientSecret: Rel3Bjce2MajBo09qgkNgYaTuzvJe8iwnBFhsDS5
+        clientSecret: kjlansdlJASNDasd81239812
         expirySeconds: 360036
         expiryRefreshSeconds: 86400
+secretKey: asdva323fa3fa3fw3fFAASqwdqsa1232
+springdoc:
+    swagger-ui:
+        doc-expansion: "none"
+        display-request-duration: true
+        default-models-expand-depth: -1
+        show-extensions: true
+        persist-authorization: true
+        default-model-expand-depth: 3
+        operations-sorter: "method"
+    override-with-generic-response: true
+    writer-with-default-pretty-printer: true
+apiPrefix: szs

@@ -1,4 +1,4 @@
-package com.szs.assignment.configure;
+package com.szs.assignment.configure.security;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,6 @@ public class JwtTokenConfigure {
     private String clientSecret;
 
     private int expirySeconds;
-    private int expiryRefreshSeconds;
 
     public String getHeader() {
 
@@ -24,14 +23,6 @@ public class JwtTokenConfigure {
     public void setHeader(String header) {
 
         this.header = header;
-    }
-
-    public int getExpiryRefreshSeconds() {
-        return expiryRefreshSeconds;
-    }
-
-    public void setExpiryRefreshSeconds(int expiryRefreshSeconds) {
-        this.expiryRefreshSeconds = expiryRefreshSeconds;
     }
 
     public String getIssuer() {
