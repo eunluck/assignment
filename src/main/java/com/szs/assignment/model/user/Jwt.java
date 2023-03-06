@@ -1,4 +1,4 @@
-package com.szs.assignment.configure.security;
+package com.szs.assignment.model.user;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
@@ -7,6 +7,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.szs.assignment.configure.security.JwtTokenConfigure;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
@@ -115,11 +116,12 @@ public class Jwt {
         }
 
 
-        long iat() {
+        long getIat() {
             return iat != null ? iat.getTime() : -1;
         }
 
-        long exp() {
+
+        public long getExp() {
             return exp != null ? exp.getTime() : -1;
         }
 

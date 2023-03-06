@@ -1,5 +1,7 @@
 package com.szs.assignment.configure.security;
 
+import com.szs.assignment.controller.user.dto.JwtAuthentication;
+import com.szs.assignment.model.user.Jwt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -56,9 +58,9 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
                         response.setHeader(headerKey, refreshedToken);
                     }
 
-                    Long userKey = claims.userKey;
-                    String userId = claims.userId;
-                    String name = claims.name;
+                    Long userKey = claims.getUserKey();
+                    String userId = claims.getUserId();
+                    String name = claims.getName();
 
                     List<GrantedAuthority> authorities = obtainAuthorities(claims);
 
@@ -82,7 +84,7 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
     }
 
     private boolean canRefresh(Jwt.Claims claims, long refreshRangeMillis) {
-        long exp = claims.exp();
+        long exp = claims.getExp();
         if (exp > 0) {
             long remain = exp - System.currentTimeMillis();
             return remain < refreshRangeMillis;
@@ -92,7 +94,7 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
 
 
     private List<GrantedAuthority> obtainAuthorities(Jwt.Claims claims) {
-        String[] roles = claims.roles;
+        String[] roles = claims.getRoles();
         return roles == null || roles.length == 0 ?
             Collections.emptyList() :
             Arrays.stream(roles).map(SimpleGrantedAuthority::new).collect(toList());

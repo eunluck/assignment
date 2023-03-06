@@ -1,10 +1,11 @@
 package com.szs.assignment.model.json;
 
+import static com.szs.assignment.util.MessageUtils.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.szs.assignment.model.entity.Deduction;
-import com.szs.assignment.model.entity.IncomeType;
-import com.szs.assignment.model.entity.Salary;
-import com.szs.assignment.util.MessageUtils;
+import com.szs.assignment.model.refund.Deduction;
+import com.szs.assignment.model.refund.IncomeType;
+import com.szs.assignment.model.refund.Salary;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -43,7 +44,7 @@ public class SzsJsonBody {
         }
 
         public BigDecimal get산출세액() {
-            return new BigDecimal(MessageUtils.removeThousandsSign(산출세액));
+            return new BigDecimal(removeThousandsSign(산출세액));
         }
 
     }
@@ -67,7 +68,7 @@ public class SzsJsonBody {
         private String 사업자등록번호;
 
         public BigDecimal get총지급액() {
-            return new BigDecimal(MessageUtils.removeThousandsSign(총지급액));
+            return new BigDecimal(removeThousandsSign(총지급액));
         }
 
         public LocalDate get업무시작일() {
@@ -111,14 +112,14 @@ public class SzsJsonBody {
 
         public BigDecimal get금액() {
             return new BigDecimal(
-                    MessageUtils.removeThousandsSign(
+                    removeThousandsSign(
                             Optional.ofNullable(금액)
                                     .orElseGet(() -> "0"))).setScale(0);
         }
 
         public BigDecimal get총납임금액() {
             return new BigDecimal(
-                    MessageUtils.removeThousandsSign(
+                    removeThousandsSign(
                             Optional.ofNullable(총납임금액)
                                     .orElseGet(() -> "0"))).setScale(3, RoundingMode.DOWN);
         }
@@ -127,6 +128,13 @@ public class SzsJsonBody {
             this.금액 = deduction.getAmount().toString();
             this.소득구분 = deduction.getType().name();
             this.총납임금액 = deduction.getTotalAmount().toString();
+        }
+
+        public SzsDeduction formatting(){
+            this.금액 = moneyFormatting(금액);
+            this.소득구분 = moneyFormatting(소득구분);
+            this.총납임금액 = moneyFormatting(총납임금액);
+            return this;
         }
     }
 

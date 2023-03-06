@@ -1,6 +1,6 @@
 package com.szs.assignment.repository;
 
-import com.szs.assignment.model.entity.CanJoinUser;
+import com.szs.assignment.model.user.CanJoinUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

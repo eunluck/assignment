@@ -1,7 +1,8 @@
-package com.szs.assignment.model.entity;
+package com.szs.assignment.model.user;
 
 import com.szs.assignment.configure.security.CryptoConverter;
-import com.szs.assignment.configure.security.Jwt;
+import com.szs.assignment.model.BaseEntity;
+import com.szs.assignment.model.refund.ScrapHistory;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

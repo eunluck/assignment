@@ -1,15 +1,15 @@
 package com.szs.assignment.controller.user.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.NotBlank;
-
 
 public class LoginDto {
+
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter
@@ -23,8 +23,6 @@ public class LoginDto {
         @Schema(description = "패스워드", example = "0694123")
         @NotBlank(message = "패스워드를 입력해주세요.")
         private String password;
-
-
     }
 
     @NoArgsConstructor
@@ -38,8 +36,6 @@ public class LoginDto {
 
         @Schema(description = "사용자")
         private UserDto.Response user;
-
-
     }
 
 }

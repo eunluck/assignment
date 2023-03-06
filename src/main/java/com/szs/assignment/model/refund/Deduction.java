@@ -1,17 +1,22 @@
-package com.szs.assignment.model.entity;
+package com.szs.assignment.model.refund;
 
+import com.szs.assignment.model.BaseEntity;
 import com.szs.assignment.model.json.SzsJsonBody;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @NoArgsConstructor
@@ -36,14 +41,17 @@ public class Deduction extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private IncomeType type;
 
-    public static List<Deduction> listOf(ScrapHistory scrapHistory, List<SzsJsonBody.SzsDeduction> szsDeduction) {
-        return szsDeduction.stream().map(deduction ->
+    public static List<Deduction> listOf(ScrapHistory scrapHistory,
+        List<SzsJsonBody.SzsDeduction> szsDeduction) {
+        return szsDeduction
+            .stream()
+            .map(deduction ->
                 new Deduction(
-                        scrapHistory,
-                        deduction.get금액(),
-                        deduction.get총납임금액(),
-                        deduction.get소득구분())
-        ).collect(Collectors.toList());
+                    scrapHistory,
+                    deduction.get금액(),
+                    deduction.get총납임금액(),
+                    deduction.get소득구분()))
+            .collect(Collectors.toList());
     }
 
 }

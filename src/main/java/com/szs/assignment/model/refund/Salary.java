@@ -1,6 +1,8 @@
-package com.szs.assignment.model.entity;
+package com.szs.assignment.model.refund;
 
+import com.szs.assignment.configure.security.CryptoConverter;
 import com.szs.assignment.model.json.SzsJsonBody;
+import javax.persistence.Convert;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +23,7 @@ public class Salary {
     private String company;
     private String incomeDetails;
     private String incomeType;
+    @Convert(converter = CryptoConverter.class)
     private String companyNumber;
 
     public static Salary newSalary(SzsJsonBody.SzsSalary salary){

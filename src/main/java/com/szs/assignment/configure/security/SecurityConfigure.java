@@ -1,6 +1,7 @@
 package com.szs.assignment.configure.security;
 
-import com.szs.assignment.model.Role;
+import com.szs.assignment.model.user.Jwt;
+import com.szs.assignment.model.user.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;

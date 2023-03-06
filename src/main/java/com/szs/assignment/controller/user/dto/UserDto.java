@@ -1,25 +1,21 @@
 package com.szs.assignment.controller.user.dto;
 
-import com.szs.assignment.configure.security.JwtAuthentication;
 import com.szs.assignment.controller.BaseDto;
-import com.szs.assignment.model.entity.UserInfo;
+import com.szs.assignment.model.user.UserInfo;
 import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
 public class UserDto {
-
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
     @ToString
     public static class JoinRequest {
-
         @Schema(description = "사용자 로그인 ID", example = "eunluck")
         @NotBlank(message = "아이디를 입력해주세요.")
         @Pattern(regexp = "^[a-zA-Z0-9_]{3,15}$", message = "3~15자의 영어와 숫자만 허용됩니다.")
@@ -38,11 +34,10 @@ public class UserDto {
         private String password;
 
         public UserInfo newUser() {
-            return UserInfo.join(userId,password, name, regNo);
+            return UserInfo.join(userId, password, name, regNo);
         }
 
     }
-
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
@@ -58,14 +53,6 @@ public class UserDto {
         @Schema(description = "주민등록번호", example = "920812-1234567")
         private String regNo;
 
-
-        public static Response fromJwtAuthentication(JwtAuthentication jwtAuthentication) {
-            return new Response(
-                    jwtAuthentication.seq,
-                    jwtAuthentication.getUserId(),
-                    jwtAuthentication.getName());
-        }
-
         public Response(UserInfo userInfoEntity) {
             super(userInfoEntity);
             this.userId = userInfoEntity.getUserId();
@@ -79,7 +66,12 @@ public class UserDto {
             this.name = name;
         }
 
-
+        public static Response fromJwtAuthentication(JwtAuthentication jwtAuthentication) {
+            return new Response(
+                jwtAuthentication.seq,
+                jwtAuthentication.getUserId(),
+                jwtAuthentication.getName());
+        }
     }
 
 }

@@ -1,7 +1,7 @@
-package com.szs.assignment.controller.business.dto;
+package com.szs.assignment.controller.refund.dto;
 
 import com.szs.assignment.controller.BaseDto;
-import com.szs.assignment.model.entity.ScrapHistory;
+import com.szs.assignment.model.refund.ScrapHistory;
 import com.szs.assignment.model.json.SzsJsonBody;
 import com.szs.assignment.model.json.SzsJsonBody.SzsDeduction;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class ScrapDto {
 
         public Response(ScrapHistory scrapHistory) {
             super(scrapHistory);
-            this.deductions = scrapHistory.getDeductions().stream().map(SzsDeduction::new).collect(Collectors.toList());
+            this.deductions = scrapHistory.getDeductions().stream().map(SzsDeduction::new).map(SzsDeduction::formatting).collect(Collectors.toList());
             this.salary = new SzsJsonBody.SzsSalary(scrapHistory.getSalary());
             this.resultTaxAmount = scrapHistory.getResultTaxAmount().toString();
         }

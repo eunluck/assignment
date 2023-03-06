@@ -1,6 +1,5 @@
 package com.szs.assignment.service;
 
-import com.szs.assignment.model.json.SzsJsonBody;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,12 +8,12 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootTest
-class BusinessServiceTest {
+class RefundServiceTest {
 
     @MockBean
     private WebClient webClient;
     @Autowired
-    private BusinessService businessService;
+    private RefundService refundService;
 
     WebTestClient testClient = WebTestClient
             .bindToServer()

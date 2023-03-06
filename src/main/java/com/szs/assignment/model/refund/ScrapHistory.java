@@ -1,7 +1,10 @@
-package com.szs.assignment.model.entity;
+package com.szs.assignment.model.refund;
 
 import com.google.common.collect.Lists;
+import com.szs.assignment.model.BaseEntity;
+import com.szs.assignment.model.user.UserInfo;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,6 +47,7 @@ public class ScrapHistory extends BaseEntity {
         this.deductions.addAll(deduction);
     }
 
+    @Builder
     public ScrapHistory(UserInfo user, Salary salary, BigDecimal resultTaxAmount) {
         this.user = user;
         this.salary = salary;

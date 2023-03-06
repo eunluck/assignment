@@ -1,7 +1,7 @@
 package com.szs.assignment.service;
 
 
-import com.szs.assignment.model.entity.UserInfo;
+import com.szs.assignment.model.user.UserInfo;
 import com.szs.assignment.repository.CanJoinUserRepository;
 import com.szs.assignment.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

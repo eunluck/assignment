@@ -1,6 +1,5 @@
-package com.szs.assignment.model.entity;
+package com.szs.assignment.model;
 
-import com.szs.assignment.model.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

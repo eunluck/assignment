@@ -1,4 +1,4 @@
-package com.szs.assignment.model.entity;
+package com.szs.assignment.model.refund;
 
 import java.math.BigDecimal;
 import java.util.function.Function;

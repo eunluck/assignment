@@ -2,8 +2,9 @@ package com.szs.assignment.configure.security;
 
 import com.szs.assignment.controller.user.dto.LoginDto;
 import com.szs.assignment.controller.user.dto.UserDto;
-import com.szs.assignment.model.Role;
-import com.szs.assignment.model.entity.UserInfo;
+import com.szs.assignment.model.user.Jwt;
+import com.szs.assignment.model.user.Role;
+import com.szs.assignment.model.user.UserInfo;
 import com.szs.assignment.service.UserService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;

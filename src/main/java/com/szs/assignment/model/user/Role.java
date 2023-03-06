@@ -1,4 +1,4 @@
-package com.szs.assignment.model;
+package com.szs.assignment.model.user;
 
 public enum Role {
 
