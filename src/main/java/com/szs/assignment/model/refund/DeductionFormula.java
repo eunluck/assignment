@@ -21,7 +21,7 @@ public enum DeductionFormula {
         return (amount) -> amount.multiply(BigDecimal.valueOf(0.55));
     }
     private static Function<BigDecimal, BigDecimal> standardTaxDeductionAmount() {
-        return (amount) -> amount.compareTo(BigDecimal.valueOf(130000)) < 0 ? BigDecimal.ZERO : BigDecimal.valueOf(130000);
+        return (amount) -> amount.compareTo(BigDecimal.valueOf(130000)) <= 0 ? BigDecimal.ZERO : BigDecimal.valueOf(130000);
     }
 
     private static Function<BigDecimal, BigDecimal> retirementPensionTaxDeductionAmount() {

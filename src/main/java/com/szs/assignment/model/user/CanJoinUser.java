@@ -32,4 +32,11 @@ public class CanJoinUser extends BaseEntity {
     @Convert(converter = CryptoConverter.class)
     private String regNo;
 
+    public CanJoinUser(Long seq, String name, String regNo){
+        super(seq);
+        this.name = name;
+        this.regNo = regNo;
+
+    }
+
 }

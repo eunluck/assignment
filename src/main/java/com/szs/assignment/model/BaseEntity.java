@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
-@EqualsAndHashCode(of = "pk")
+@EqualsAndHashCode(of = "seq")
 @EntityListeners(value = AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,4 +33,7 @@ public class BaseEntity {
 
     private LocalDateTime deletedAt;
 
+    public BaseEntity(Long seq) {
+        this.seq = seq;
+    }
 }

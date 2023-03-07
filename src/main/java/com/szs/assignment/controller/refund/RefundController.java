@@ -50,6 +50,7 @@ public class RefundController {
                 auth.getName(),
                 refundService.calculateRefund(
                     scrapHistory.getResultTaxAmount(),
+                    scrapHistory.getSalary().getTotalAmount(),
                     scrapHistory.getDeductions()))
         );
     }
@@ -57,7 +58,7 @@ public class RefundController {
     @Tag(name = "환급 API")
     @PutMapping(path = "scrap")
     @Operation(summary = "스크랩", description = "외부에서 자산 정보 스크랩.")
-    public ApiResult<Void> myDetailInfo(
+    public ApiResult<Void> scrapFromSzs(
         @AuthenticationPrincipal JwtAuthentication auth
     ) {
 
@@ -72,7 +73,7 @@ public class RefundController {
     @Tag(name = "환급 API")
     @GetMapping(path = "scrap")
     @Operation(summary = "스크랩 결과 확인", description = "외부에서 스크랩된 정보 확인")
-    public ApiResult<ScrapDto.Response> crapResult(
+    public ApiResult<ScrapDto.Response> scrapResult(
         @AuthenticationPrincipal JwtAuthentication auth
     ) {
         return OK(

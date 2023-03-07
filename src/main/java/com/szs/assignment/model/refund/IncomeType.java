@@ -19,9 +19,9 @@ public enum IncomeType {
 
 
 
-    public BigDecimal getCalculatedValue(BigDecimal amount, BigDecimal totalAmount) {
+    public BigDecimal getCalculatedValue(BigDecimal amount, BigDecimal salaryTotal) {
         if(IncomeType.의료비.equals(this)){
-            amount = amount.subtract(totalAmount.multiply(BigDecimal.valueOf(0.03)));
+            amount = amount.subtract(salaryTotal.multiply(BigDecimal.valueOf(0.03)));
         }
         return getCalculatedValue(amount);
     }

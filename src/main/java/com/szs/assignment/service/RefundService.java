@@ -90,12 +90,12 @@ public class RefundService {
             .bodyToMono(SzsJsonBody.class);
     }
 
-    public RefundDto calculateRefund(BigDecimal totalAmount, List<Deduction> deductions) {
+    public RefundDto calculateRefund(BigDecimal calculatedTaxAmount, BigDecimal salaryTotal, List<Deduction> deductions) {
 
-        BigDecimal 근로소득세액공제 = calculateIncomeTaxDeduction(totalAmount)
+        BigDecimal 근로소득세액공제 = calculateIncomeTaxDeduction(calculatedTaxAmount)
             .setScale(0, RoundingMode.HALF_UP);
 
-        BigDecimal 특별세액공제 = calculateSpecialTaxDeduction(totalAmount, deductions)
+        BigDecimal 특별세액공제 = calculateSpecialTaxDeduction(salaryTotal, deductions)
             .setScale(0, RoundingMode.HALF_UP);
 
         BigDecimal 표준세액공제 = calculateStandardTaxDeduction(특별세액공제)
@@ -108,7 +108,7 @@ public class RefundService {
         BigDecimal 퇴직연금세액공제 = calculateRetirementTaxDeduction(deductions).setScale(0,
             RoundingMode.HALF_UP);
 
-        BigDecimal temp = totalAmount
+        BigDecimal temp = calculatedTaxAmount
             .subtract(근로소득세액공제)
             .subtract(특별세액공제)
             .subtract(표준세액공제)
@@ -125,7 +125,7 @@ public class RefundService {
         return DeductionFormula.근로소득세액공제금액.getCalculatedValue(totalAmount);
     }
 
-    public BigDecimal calculateSpecialTaxDeduction(BigDecimal totalAmount,
+    public BigDecimal calculateSpecialTaxDeduction(BigDecimal salaryTotal,
         List<Deduction> deductions) {
         return deductions
             .stream()
@@ -133,7 +133,7 @@ public class RefundService {
                 deduction.getType().isApplySpecialDeduction())
             .map(deduction ->
                 deduction.getType()
-                    .getCalculatedValue(deduction.getAmount(), totalAmount))
+                    .getCalculatedValue(deduction.getAmount(), salaryTotal))
             .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 

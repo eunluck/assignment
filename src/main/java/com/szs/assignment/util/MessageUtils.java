@@ -1,8 +1,8 @@
 package com.szs.assignment.util;
 
+import com.google.common.base.Strings;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.context.support.MessageSourceAccessor;
 
 import static com.google.common.base.Preconditions.checkState;
@@ -13,7 +13,7 @@ public class MessageUtils {
   private static final DecimalFormat df = new DecimalFormat("#,###");
 
   public static String removeThousandsSign(String value) {
-    if (Strings.isBlank(value)) {
+    if (Strings.isNullOrEmpty(value)) {
       return "0";
     }
 
@@ -36,6 +36,9 @@ public class MessageUtils {
 
 
   public static String moneyFormatting(String value) {
+    if (Strings.isNullOrEmpty(value)){
+      return "0";
+    }
     return df.format(value);
   }
 

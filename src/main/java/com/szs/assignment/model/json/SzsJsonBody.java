@@ -131,10 +131,7 @@ public class SzsJsonBody {
         }
 
         public SzsDeduction formatting(){
-            this.금액 = moneyFormatting(금액);
-            this.소득구분 = moneyFormatting(소득구분);
-            this.총납임금액 = moneyFormatting(총납임금액);
-            return this;
+            return new SzsDeduction(moneyFormatting(금액), moneyFormatting(소득구분), moneyFormatting(총납임금액));
         }
     }
 

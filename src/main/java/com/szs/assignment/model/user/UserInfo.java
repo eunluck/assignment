@@ -63,4 +63,11 @@ public class UserInfo extends BaseEntity {
         this.name = name;
         this.regNo = regNo;
     }
+    public UserInfo(Long seq, String userId,String password, String name, String regNo){
+        super(seq);
+        this.userId = userId;
+        this.password = password;
+        this.name = name;
+        this.regNo = regNo;
+    }
 }

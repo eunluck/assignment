@@ -39,7 +39,15 @@ public class Jwt {
             .withIssuer(issuer)
             .build();
     }
-
+    public Jwt(String issuer, String clientSecret, int expirySeconds) {
+        this.issuer = issuer;
+        this.clientSecret = clientSecret;
+        this.accessTokenExpirySeconds = expirySeconds;
+        this.algorithm = Algorithm.HMAC512(clientSecret);
+        this.jwtVerifier = com.auth0.jwt.JWT.require(algorithm)
+            .withIssuer(issuer)
+            .build();
+    }
     public String newToken(Claims claims) {
 
         Date now = new Date();

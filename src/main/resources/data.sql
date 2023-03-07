@@ -1,6 +1,6 @@
 INSERT INTO can_join_user (name, reg_no)
-VALUES ('홍길동', '860824-1655068'),
-       ('김둘리', '921108-1582816'),
-       ('마징가', '880601-2455116'),
-       ('베지터', '910411-1656116'),
-       ('손오공', '820326-2715702');
+VALUES ('홍길동', 'SdG661xy+uqHghsAS3MWdw=='),
+       ('김둘리', '8ET1TpHqyA3ROnpRLrvL4Q=='),
+       ('마징가', 'ErB1gFozENHsr3dkC/coIA=='),
+       ('베지터', 'UOxK1VNQYo47BBeL4b4KVw=='),
+       ('손오공', 'udFzUfdCyFwtyRbHRmCxVA==');

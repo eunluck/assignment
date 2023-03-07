@@ -85,7 +85,19 @@ public class UserController {
 
     @Tag(name = "회원 API")
     @PostMapping(path = "signup")
-    @Operation(summary = "사용자 회원가입", description = "회원가입합니다.")
+    @Operation(summary = "사용자 회원가입", description = "아래 유저만 회원가입 가능합니다."
+        + "<br/>"
+        + "이름, 주민등록번호"
+        + "<br/>"
+        + "홍길동, 860824-1655068"
+        + "<br/>"
+        + "김둘리, 921108-1582816"
+        + "<br/>"
+        + "마징가, 880601-2455116"
+        + "<br/>"
+        + "베지터, 910411-1656116"
+        + "<br/>"
+        + "손오공, 820326-2715702")
     public ApiResult<UserDto.Response> join(
         @Valid @RequestBody JoinRequest joinRequest
     ) {
