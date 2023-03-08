@@ -27,7 +27,6 @@ jwt:
         header: Authorization
         issuer: szs
         clientSecret: kjlansdlJASNDasd81239812
-        expirySeconds: 360036
-        expiryRefreshSeconds: 86400
+        expirySeconds: 3600
 secretKey: asdva323fa3fa3fw3fFAASqwdqsa1232
 apiPrefix: szs

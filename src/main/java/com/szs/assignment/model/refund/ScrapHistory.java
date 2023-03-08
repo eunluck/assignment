@@ -28,6 +28,7 @@ public class ScrapHistory extends BaseEntity {
     private List<Deduction> deductions = Lists.newArrayList();
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_seq")
     private UserInfo user;
 
     @Embedded

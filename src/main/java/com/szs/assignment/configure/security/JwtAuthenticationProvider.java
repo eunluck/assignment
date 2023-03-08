@@ -50,6 +50,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     private Authentication processUserAuthentication(String loginId, String password) {
 
             UserInfo userInfo = userService.login(loginId, password);
+            String apiToken = userInfo.newApiToken(jwt, new String[]{Role.USER.value()});
 
             JwtAuthenticationToken authenticated =
                 new JwtAuthenticationToken(
@@ -57,7 +58,6 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
                     null,
                     createAuthorityList(Collections.singleton(Role.USER.value())));
 
-            String apiToken = userInfo.newApiToken(jwt, new String[]{Role.USER.value()});
 
             authenticated.setDetails(
                     new LoginDto.Response(

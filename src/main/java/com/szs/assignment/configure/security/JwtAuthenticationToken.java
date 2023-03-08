@@ -27,11 +27,11 @@ public class JwtAuthenticationToken extends AbstractAuthenticationToken {
     }
 
 
-    JwtAuthenticationToken(Object seq, String credentials, Collection<? extends GrantedAuthority> authorities) {
+    public JwtAuthenticationToken(Object principal, String credentials, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         super.setAuthenticated(true);
 
-        this.principal = seq;
+        this.principal = principal;
         this.credentials = credentials;
     }
 
