@@ -10,6 +10,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.szs.assignment.configure.security.JwtTokenConfigure;
 import lombok.Getter;
 import lombok.ToString;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -39,15 +40,7 @@ public class Jwt {
             .withIssuer(issuer)
             .build();
     }
-    public Jwt(String issuer, String clientSecret, int expirySeconds) {
-        this.issuer = issuer;
-        this.clientSecret = clientSecret;
-        this.accessTokenExpirySeconds = expirySeconds;
-        this.algorithm = Algorithm.HMAC512(clientSecret);
-        this.jwtVerifier = com.auth0.jwt.JWT.require(algorithm)
-            .withIssuer(issuer)
-            .build();
-    }
+
     public String newToken(Claims claims) {
 
         Date now = new Date();

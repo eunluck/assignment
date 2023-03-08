@@ -15,6 +15,7 @@ public class UserDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @ToString
+    @Schema(name = "회원가입 요청")
     public static class JoinRequest {
         @Schema(description = "사용자 로그인 ID", example = "eunluck")
         @NotBlank(message = "아이디를 입력해주세요.")
@@ -42,6 +43,7 @@ public class UserDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @ToString(callSuper = true)
+    @Schema(name = "회원가입 성공")
     public static class Response extends BaseDto {
 
         @Schema(description = "사용자 로그인 ID", example = "eunluck")

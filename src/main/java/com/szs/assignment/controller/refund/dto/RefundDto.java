@@ -20,6 +20,7 @@ public class RefundDto {
     BigDecimal 퇴직연금세액공제;
     BigDecimal 결정세액;
 
+    @Schema(name = "환급액 조회 성공")
     public static class Response {
         @Schema(description = "이름")
         String 은행운;
@@ -43,7 +44,6 @@ public class RefundDto {
             this.결정세액 = moneyFormatting(refund.get결정세액());
         }
     }
-
 
 
 

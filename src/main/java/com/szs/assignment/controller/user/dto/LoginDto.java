@@ -14,6 +14,7 @@ public class LoginDto {
     @AllArgsConstructor
     @Getter
     @ToString
+    @Schema(name = "로그인 요청")
     public static class Request {
 
         @Schema(description = "로그인 ID", example = "eunluck")
@@ -29,6 +30,7 @@ public class LoginDto {
     @AllArgsConstructor
     @Getter
     @ToString
+    @Schema(name = "로그인 성공", description = "apiToken : 헤더의 Authorization에 셋팅할 값")
     public static class Response {
 
         @Schema(description = "로그인 ID", example = "eunluck")

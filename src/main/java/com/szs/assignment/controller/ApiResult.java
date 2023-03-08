@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 
 @ToString
 @Getter
+@Schema(description = "API 응답 형식")
 public class ApiResult<T> {
 
     @Schema(description = "API 요청 처리 결과")
