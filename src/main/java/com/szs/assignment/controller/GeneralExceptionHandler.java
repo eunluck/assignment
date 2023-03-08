@@ -45,7 +45,7 @@ public class GeneralExceptionHandler {
     if (e instanceof MethodArgumentNotValidException) {
       e = new IllegalArgumentException(((MethodArgumentNotValidException) e).getBindingResult().getAllErrors().get(0).getDefaultMessage());
     }
-    log.debug("잘못된 요청 : {}", e.getMessage(), e);
+    log.info("잘못된 요청 : {}", e.getMessage(), e);
     return newResponse(e, HttpStatus.BAD_REQUEST);
   }
 
@@ -66,7 +66,6 @@ public class GeneralExceptionHandler {
     if (e instanceof UnauthorizedException)
       return newResponse(e, HttpStatus.UNAUTHORIZED);
     if (e instanceof SzsApiException){
-     log.warn("SzsApiException : {}", e.getMessage(), e);
       return newResponse(e, HttpStatus.SERVICE_UNAVAILABLE);
     }
 

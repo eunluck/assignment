@@ -40,7 +40,7 @@ public class UserController {
 
     @Tag(name = "회원 API")
     @GetMapping(path = "me")
-    @Operation(summary = "내 정보 보기", description = "Jwt 토큰을 통해 내 정보를 조회합니다.")
+    @Operation(summary = "내 정보 보기", description = "Jwt 토큰을 통해 내 정보를 조회합니다. DB 호출(X)")
     public ApiResult<JwtAuthentication> myInfo(
         @AuthenticationPrincipal JwtAuthentication auth
     ) {
@@ -49,7 +49,7 @@ public class UserController {
 
     @Tag(name = "회원 API")
     @GetMapping(path = "me/detail")
-    @Operation(summary = "내 정보 상세 보기", description = "가입일시, 주민등록번호 등 상세 정보를 조회합니다.")
+    @Operation(summary = "내 정보 상세 보기", description = "데이터베이스를 조회해 가입일시, 주민등록번호 등 상세 정보를 조회합니다.")
     public ApiResult<UserDto.Response> myDetailInfo(
         @AuthenticationPrincipal JwtAuthentication auth
     ) {
@@ -63,7 +63,7 @@ public class UserController {
 
     @Tag(name = "회원 API")
     @PostMapping(path = "login")
-    @Operation(summary = "사용자 로그인", description = "로그인 후 토큰을 발급받는다.")
+    @Operation(summary = "사용자 로그인", description = "로그인 후 토큰을 발급받습니다.")
     public ApiResult<LoginDto.Response> join(
         @Valid @RequestBody LoginDto.Request request
     ) throws UnauthorizedException {
