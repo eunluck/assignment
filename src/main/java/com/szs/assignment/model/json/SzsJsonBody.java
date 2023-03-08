@@ -125,14 +125,12 @@ public class SzsJsonBody {
         }
 
         public SzsDeduction(Deduction deduction){
-            this.금액 = deduction.getAmount().toString();
+            this.금액 = moneyFormatting(deduction.getAmount());
             this.소득구분 = deduction.getType().name();
-            this.총납임금액 = deduction.getTotalAmount().toString();
+            this.총납임금액 = moneyFormatting(deduction.getTotalAmount());
         }
 
-        public SzsDeduction formatting(){
-            return new SzsDeduction(moneyFormatting(금액), moneyFormatting(소득구분), moneyFormatting(총납임금액));
-        }
+
     }
 
 }

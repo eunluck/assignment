@@ -30,6 +30,7 @@ public class EntryPointUnauthorizedHandler implements AuthenticationEntryPoint {
         throws IOException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setHeader("content-type", "application/json");
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().write(om.writeValueAsString(E401));
         response.getWriter().flush();
         response.getWriter().close();

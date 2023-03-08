@@ -33,11 +33,11 @@ public class ServiceConfigure {
     public WebClient webClient() {
         return WebClient.builder().clientConnector((method, uri, requestCallback) -> {
             HttpClient httpClient = HttpClient.create()
-                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
-                    .responseTimeout(Duration.ofSeconds(30))
-                    .doOnConnected(conn ->
-                            conn.addHandlerLast(new ReadTimeoutHandler(30, TimeUnit.SECONDS))
-                                    .addHandlerLast(new WriteTimeoutHandler(30, TimeUnit.SECONDS)));
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+                .responseTimeout(Duration.ofSeconds(30))
+                .doOnConnected(conn ->
+                    conn.addHandlerLast(new ReadTimeoutHandler(30, TimeUnit.SECONDS))
+                        .addHandlerLast(new WriteTimeoutHandler(30, TimeUnit.SECONDS)));
 
             ReactorClientHttpConnector connector = new ReactorClientHttpConnector(httpClient);
 
