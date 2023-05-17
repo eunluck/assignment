@@ -16,8 +16,6 @@
 다.
 
 - 프로젝트 character set은 UTF-8로 설정합니다. 
-If you use this template, you can use this function
-
 
 - DB는 H2 Embeded DB를 사용합니다.
 - 회원가입, 환급액 계산, 유저 정보 조회 API를 구현합니다.
